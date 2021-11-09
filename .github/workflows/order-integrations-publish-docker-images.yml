@@ -27,7 +27,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@v2
       with:
-        images: ghcr.io/your-azure-coach/yac-document-to-order-processor
+        images: ghcr.io/your-azure-coach/yac-order-integrations
         tags: latest
         
     - name: Build and push Docker image for Document to Order Logic App
