@@ -1,4 +1,4 @@
-name: Publish Docker images
+name: ORDER APP | Publish Docker images
 
 on:
   push:
