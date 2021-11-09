@@ -1,5 +1,7 @@
 FROM mcr.microsoft.com/azure-functions/node:3.0
 
+ENV AzureWebJobsStorage=DefaultEndpointsProtocol=https;AccountName=yacdevecommercest;AccountKey=O5Bc4bJVl7GRP0RNFZWU53uDIat4JkhjmDPo7Ju12tuYdgx6S4UYu3AGqZrs+hbQORnftnWA5Vp9Nb/6GhDnNQ==;EndpointSuffix=core.windows.net
+ENV AZURE_FUNCTIONS_ENVIRONMENT=Development
 ENV AzureWebJobsScriptRoot=/home/site/wwwroot
 ENV AzureFunctionsJobHost__Logging__Console__IsEnabled=true
 ENV FUNCTIONS_V2_COMPATIBILITY_MODE=true
