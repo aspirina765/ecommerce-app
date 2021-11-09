@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "OrderApp.OrderProcessor": {
+      "commandName": "Executable",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": "true"
+    },
+    "Docker": {
+      "commandName": "Project"
+    }
+  }
+}

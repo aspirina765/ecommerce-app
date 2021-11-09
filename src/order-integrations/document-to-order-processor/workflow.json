@@ -1,0 +1,138 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "actions": {
+      "Check_if_it_is_an_Event_Grid_validation_event": {
+        "actions": {
+          "Validation_Response": {
+            "inputs": {
+              "body": {
+                "validationResponse": "@triggerBody()[0].data.validationCode"
+              },
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "statusCode": 200
+            },
+            "kind": "http",
+            "runAfter": {},
+            "type": "Response"
+          }
+        },
+        "else": {
+          "actions": {
+            "Create_order_via_Order_API": {
+              "inputs": {
+                "body": "@decodeBase64(body('Get_document_from_Document_API').$content)",
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "method": "POST",
+                "uri": "@{concat(appSetting('ORDER_API_BASEURL'), '/order')}"
+              },
+              "runAfter": {
+                "Get_document_from_Document_API": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Http"
+            },
+            "Get_document_from_Document_API": {
+              "inputs": {
+                "method": "GET",
+                "uri": "@{concat(appSetting('DOCUMENT_API_BASEURL'), '/document/', last(split(triggerBody()[0].data.url, '/') ))}"
+              },
+              "runAfter": {
+                "OK_Response": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Http"
+            },
+            "OK_Response": {
+              "inputs": {
+                "statusCode": 200
+              },
+              "kind": "http",
+              "runAfter": {},
+              "type": "Response"
+            }
+          }
+        },
+        "expression": {
+          "and": [
+            {
+              "equals": [
+                "@triggerBody()[0].eventType",
+                "Microsoft.EventGrid.SubscriptionValidationEvent"
+              ]
+            }
+          ]
+        },
+        "runAfter": {},
+        "type": "If"
+      }
+    },
+    "contentVersion": "1.0.0.0",
+    "outputs": {},
+    "triggers": {
+      "manual": {
+        "inputs": {
+          "schema": {
+            "items": {
+              "properties": {
+                "data": {
+                  "properties": {
+                    "validationCode": {
+                      "type": "string"
+                    },
+                    "validationUrl": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "dataVersion": {
+                  "type": "string"
+                },
+                "eventTime": {
+                  "type": "string"
+                },
+                "eventType": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "metadataVersion": {
+                  "type": "string"
+                },
+                "subject": {
+                  "type": "string"
+                },
+                "topic": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "topic",
+                "subject",
+                "data",
+                "eventType",
+                "eventTime",
+                "metadataVersion",
+                "dataVersion"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "kind": "Http",
+        "type": "Request"
+      }
+    }
+  },
+  "kind": "Stateful"
+}
