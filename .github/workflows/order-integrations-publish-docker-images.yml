@@ -3,8 +3,13 @@ name: ORDER INT | Publish Docker images
 on:
   push:
     branches: [ main ]
+    paths:
+      - "src/order-integrations/**"
   pull_request:
     branches: [ main ]
+    paths:
+      - "src/order-integrations/**"
+    
 
 jobs:
 
