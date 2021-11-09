@@ -27,7 +27,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@v2
       with:
-        images: ghcr.io/your-azure-coach/yac-order-api
+        images: ghcr.io/your-azure-coach/yac-order-api-2
         tags: latest
         
     - name: Build and push Docker image for Order API
@@ -61,7 +61,7 @@ jobs:
         images: ghcr.io/your-azure-coach/yac-order-processor
         tags: latest
         
-    - name: Build and push Docker image for Order API
+    - name: Build and push Docker image for Order Processor
       uses: docker/build-push-action@v2
       with:
         context: src/order-app
