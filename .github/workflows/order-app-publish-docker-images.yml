@@ -33,7 +33,7 @@ jobs:
 
     - name: Extract metadata (tags, labels) for Docker
       id: meta
-      uses: docker/metadata-action@v2
+      uses: docker/metadata-action@v3
       with:
         images: ghcr.io/your-azure-coach/yac-order-api
         tags: type=semver,pattern={{version}}
