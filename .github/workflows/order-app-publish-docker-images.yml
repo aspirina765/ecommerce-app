@@ -64,10 +64,10 @@ jobs:
 
     - name: Extract metadata (tags, labels) for Docker
       id: meta
-      uses: docker/metadata-action@v2
+      uses: docker/metadata-action@v3
       with:
         images: ghcr.io/your-azure-coach/yac-order-processor
-        tags: latest
+        tags: type=semver,pattern={{version}},value=1.0.0
         
     - name: Build and push Docker image for Order Processor
       uses: docker/build-push-action@v2
