@@ -32,7 +32,7 @@ jobs:
       uses: docker/metadata-action@v2
       with:
         images: ghcr.io/your-azure-coach/yac-order-api
-        tags: type=semver,pattern={{version}} 
+        tags: latest
         
     - name: Build and push Docker image for Order API
       uses: docker/build-push-action@v2
