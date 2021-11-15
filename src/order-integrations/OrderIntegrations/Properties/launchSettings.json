@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "OrderIntegrations": {
+      "commandName": "Project"
+    },
+    "newProfile1": {
+      "commandName": "Executable"
+    }
+  }
+}

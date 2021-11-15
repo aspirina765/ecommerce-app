@@ -8,13 +8,19 @@
 				"${input:getDebugSymbolDll}"
 			],
 			"type": "process",
-			"problemMatcher": "$msCompile"
+			"problemMatcher": "$msCompile",
+			"options": {
+				"cwd": "${workspaceFolder}/src\\order-integrations\\OrderIntegrations\\OrderIntegrations"
+			}
 		},
 		{
 			"type": "func",
 			"command": "host start",
 			"problemMatcher": "$func-watch",
-			"isBackground": true
+			"isBackground": true,
+			"options": {
+				"cwd": "${workspaceFolder}/src\\order-integrations\\OrderIntegrations\\OrderIntegrations"
+			}
 		}
 	],
 	"inputs": [

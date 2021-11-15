@@ -1,5 +1,5 @@
 {
-    "azureLogicAppsStandard.deploySubpath": ".",
+    "azureLogicAppsStandard.deploySubpath": "src\\order-integrations\\OrderIntegrations\\OrderIntegrations",
     "azureLogicAppsStandard.projectLanguage": "JavaScript",
     "azureLogicAppsStandard.projectRuntime": "~3",
     "debug.internalConsoleOptions": "neverOpen",
