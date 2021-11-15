@@ -3,12 +3,16 @@ name: ORDER APP | Publish Docker images
 on:
   push:
     branches: [ main ]
-    paths:
-      - "src/order-app/**"
+    #paths:
+      #- "src/order-app/**"
+    tags:
+      - "v*"
   pull_request:
     branches: [ main ]
     paths:
       - "src/order-app/**"
+    tags:
+      - "v*"
 
 jobs:
 
