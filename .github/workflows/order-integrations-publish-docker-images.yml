@@ -38,8 +38,8 @@ jobs:
     - name: Build and push Docker image for Document to Order Logic App
       uses: docker/build-push-action@v2
       with:
-        context: src/order-integrations
-        file: src/order-integrations/Dockerfile
+        context: src/order-integrations/OrderIntegrations
+        file: src/order-integrations/OrderIntegrations/Dockerfile
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
